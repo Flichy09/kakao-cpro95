@@ -41,16 +41,6 @@ export default class MyApp extends App {
     if (jssStyles) {
       jssStyles.parentNode.removeChild(jssStyles);
     }
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      " ";
-    }
-    {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("config", "G-2N03Z9VWJC");
   }
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
