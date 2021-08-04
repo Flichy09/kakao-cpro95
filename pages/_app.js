@@ -144,11 +144,6 @@ export default class MyApp extends App {
             content="5ed7bbda1a77dce3422e4b3dc95b6d6b492f4be9"
           />
 
-          {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-2N03Z9VWJC"
-          ></script>
           <script
             data-ad-client="ca-pub-7748316956330968"
             async
