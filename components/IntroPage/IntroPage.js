@@ -25,7 +25,7 @@ export default function Intro(props) {
   const { ...rest } = props;
   return (
     <div>
-      <Parallax filter responsive image="/img/landing-bg.jpg">
+      <Parallax filter responsive>
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
