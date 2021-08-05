@@ -2,6 +2,8 @@ import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/styles";
 
+import { GA_TRACKING_ID } from "../lib/gtag";
+
 class MyDocument extends Document {
   render() {
     return (
@@ -29,15 +31,15 @@ class MyDocument extends Document {
           {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
           <script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=G-2N03Z9VWJC"
-          ></script>
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-2N03Z9VWJC', {
+            gtag('config', '${GA_TRACKING_ID}', {
               page_path: window.location.pathname,
             });
           `,
@@ -92,10 +94,8 @@ MyDocument.getInitialProps = async (ctx) => {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [
-      <React.Fragment key="styles">
-        {initialProps.styles}
-        {sheets.getStyleElement()}
-      </React.Fragment>,
+      ...React.Children.toArray(initialProps.styles),
+      sheets.getStyleElement(),
     ],
   };
 };
