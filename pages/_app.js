@@ -1,22 +1,14 @@
 import React, { useEffect } from "react";
-// import App from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Layout from "../components/Layout";
 
 import * as gtag from "../lib/gtag";
 
-import "styles/scss/nextjs-material-kit.scss?v=1.2.0";
+import { ChakraProvider, ColorModeProvider } from "@chakra-ui/react";
 
-const MyApp = ({ Component, pageProps }) => {
+export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
-
-  useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector("#jss-server-side");
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
-    }
-  }, []);
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -27,14 +19,15 @@ const MyApp = ({ Component, pageProps }) => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
-
   return (
-    <React.Fragment>
+    <>
       <Head>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png" />
         <link
           rel="apple-touch-icon"
           sizes="57x57"
@@ -121,19 +114,11 @@ const MyApp = ({ Component, pageProps }) => {
         <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
         <title>카카오톡 웹</title>
       </Head>
-      <Component {...pageProps} />
-    </React.Fragment>
+      <ChakraProvider resetCSS>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
+    </>
   );
-};
-
-MyApp.getInitialProps = async ({ Component, router, ctx }) => {
-  let pageProps = {};
-
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
-  }
-
-  return { pageProps };
-};
-
-export default MyApp;
+}
