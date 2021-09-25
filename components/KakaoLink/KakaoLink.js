@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
+import Parallax from "components/Parallax/Parallax.js";
 
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -107,97 +108,104 @@ export default function KakaoLink() {
   };
 
   return (
-    <div className={classes.section}>
-      <GridContainer justify="center">
-        <GridItem cs={12} sm={12} md={8}>
-          {/* <h2 className={classes.title}>카카오톡 웹</h2> */}
-          <p className={classes.description}>
-            카카오톡 웹은 Kakao Developer API와 NextJs, Material-UI로
-            만들어졌습니다.
-            <br />
-            카카오톡 PC 버전 설치 없이 간단한 메시지와 이미지를 전송할 수
-            있습니다.
-          </p>
-          <form>
-            <GridContainer>
-              <TextField
-                id="outlined-full-width"
-                label="메시지"
-                className={classes.textArea}
-                placeholder="한번에 200자까지만 전송 가능 (이미지 첨부할 경우 100자만 가능)"
-                fullWidth
-                autoFocus
-                multiline
-                rows="5"
-                margin="normal"
-                variant="outlined"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                value={text}
-                onChange={(e) => handleChange(e)}
-              />
-              <GridItem xs={12} sm={12} md={12} className={classes.textCenter}>
-                <Button
+    <Parallax filter responsive>
+      <div className={classes.section}>
+        <GridContainer justify="center">
+          <GridItem cs={12} sm={12} md={8}>
+            {/* <h2 className={classes.title}>카카오톡 웹</h2> */}
+            <p className={classes.description}>
+              카카오톡 웹은 Kakao Developer API와 NextJs, Material-UI로
+              만들어졌습니다.
+              <br />
+              카카오톡 PC 버전 설치 없이 간단한 메시지와 이미지를 전송할 수
+              있습니다.
+            </p>
+            <form>
+              <GridContainer>
+                <TextField
+                  id="outlined-full-width"
+                  label="메시지"
+                  className={classes.textArea}
+                  placeholder="한번에 200자까지만 전송 가능 (이미지 첨부할 경우 100자만 가능)"
+                  fullWidth
+                  autoFocus
+                  multiline
+                  rows="5"
+                  margin="normal"
                   variant="outlined"
-                  color="primary"
-                  id="clean"
-                  className={classes.button}
-                  onClick={(e) => clean()}
-                >
-                  다시 쓰기
-                </Button>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  id="kakao-link-btn"
-                  className={classes.button}
-                  onClick={(e) => handleSubmit(e)}
-                >
-                  카톡 전송
-                </Button>
-                <input
-                  className={classes.input}
-                  accept="image/*"
-                  id="button-file"
-                  // KakaoLink not support multiple file sending yet.
-                  // multiple
-                  type="file"
-                  onChange={(e) => handleUpload(e)}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  value={text}
+                  onChange={(e) => handleChange(e)}
                 />
-                <label htmlFor="button-file">
+                <GridItem
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  className={classes.textCenter}
+                >
                   <Button
                     variant="outlined"
                     color="primary"
-                    component="span"
+                    id="clean"
                     className={classes.button}
+                    onClick={(e) => clean()}
                   >
-                    이미지 올리기
+                    다시 쓰기
                   </Button>
-                </label>
-
-                {localUrl.length > 0 ? (
-                  <div>
-                    <Card
-                      style={{
-                        margin: "30px 12px -50px 12px", // top right bottom left
-                      }}
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    id="kakao-link-btn"
+                    className={classes.button}
+                    onClick={(e) => handleSubmit(e)}
+                  >
+                    카톡 전송
+                  </Button>
+                  <input
+                    className={classes.input}
+                    accept="image/*"
+                    id="button-file"
+                    // KakaoLink not support multiple file sending yet.
+                    // multiple
+                    type="file"
+                    onChange={(e) => handleUpload(e)}
+                  />
+                  <label htmlFor="button-file">
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      component="span"
+                      className={classes.button}
                     >
-                      <CardMedia
-                        className={classes.media}
-                        image={localUrl}
-                        title="Uploaded Image"
-                      />
-                    </Card>
-                  </div>
-                ) : (
-                  <span />
-                )}
-              </GridItem>
-            </GridContainer>
-          </form>
-        </GridItem>
-      </GridContainer>
-    </div>
+                      이미지 올리기
+                    </Button>
+                  </label>
+
+                  {localUrl.length > 0 ? (
+                    <div>
+                      <Card
+                        style={{
+                          margin: "30px 12px -50px 12px", // top right bottom left
+                        }}
+                      >
+                        <CardMedia
+                          className={classes.media}
+                          image={localUrl}
+                          title="Uploaded Image"
+                        />
+                      </Card>
+                    </div>
+                  ) : (
+                    <span />
+                  )}
+                </GridItem>
+              </GridContainer>
+            </form>
+          </GridItem>
+        </GridContainer>
+      </div>
+    </Parallax>
   );
 }

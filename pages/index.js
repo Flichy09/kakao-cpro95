@@ -22,7 +22,6 @@ export default function Index(props) {
         {...rest}
       />
       <KakaoLink />
-
       <Footer />
     </div>
   );
