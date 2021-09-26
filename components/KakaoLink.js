@@ -10,8 +10,6 @@ import {
   Text,
   Box,
   Input,
-  InputGroup,
-  InputLeftAddon,
 } from "@chakra-ui/react";
 
 export default function KakaoLink() {
@@ -116,52 +114,51 @@ export default function KakaoLink() {
             있습니다.
           </Text>
 
-          <form>
-            <VStack mx={[4, 4, 0, 0]} spacing={4}>
-              <Textarea
-                placeholder="한번에 200자까지만 전송 가능 (이미지 첨부할 경우 100자만 가능)"
-                value={text}
-                onChange={(e) => handleChange(e)}
-                colorScheme="blue"
-                // isFullWidth={true}
-                size="lg"
-                rows="5"
+          <VStack w="100%" mx={[4, 4, 0, 0]} spacing={4}>
+            <Textarea
+              placeholder="한번에 200자까지만 전송 가능 (이미지 첨부할 경우 100자만 가능)"
+              value={text}
+              onChange={(e) => handleChange(e)}
+              colorScheme="blue"
+              size="lg"
+              rows="5"
+            />
+            <HStack>
+              <Button colorScheme="red" onClick={(e) => clean()}>
+                다시 쓰기
+              </Button>
+              <Button colorScheme="yellow" onClick={(e) => handleSubmit(e)}>
+                카톡 전송
+              </Button>
+              <Input
+                style={{ display: "none" }}
+                accept="image/*"
+                id="button-file"
+                // KakaoLink not support multiple file sending yet.
+                // multiple
+                type="file"
+                onChange={(e) => handleUpload(e)}
               />
-              <HStack>
-                <Button colorScheme="red" onClick={(e) => clean()}>
-                  다시 쓰기
+              <label htmlFor="button-file">
+                <Button as="span" colorScheme="facebook">
+                  이미지 올리기
                 </Button>
-                <Button colorScheme="yellow" onClick={(e) => handleSubmit(e)}>
-                  카톡 전송
-                </Button>
-                <InputGroup>
-                  <InputLeftAddon>이미지 올리기</InputLeftAddon>
-                  <Input
-                    accept="image/*"
-                    id="button-file"
-                    // KakaoLink not support multiple file sending yet.
-                    // multiple
-                    type="file"
-                    placeholder="이미지 올리기"
-                    onChange={(e) => handleUpload(e)}
-                  />
-                </InputGroup>
-              </HStack>
+              </label>
+            </HStack>
 
-              {localUrl.length > 0 ? (
-                <Box p={[0, 0, 4, 4]}>
-                  <Image
-                    src={localUrl}
-                    fit="cover"
-                    title="Uploaded Image"
-                    alt="Uploaded Image"
-                  />
-                </Box>
-              ) : (
-                <span />
-              )}
-            </VStack>
-          </form>
+            {localUrl.length > 0 ? (
+              <Box p={[0, 0, 4, 4]}>
+                <Image
+                  src={localUrl}
+                  fit="cover"
+                  title="Uploaded Image"
+                  alt="Uploaded Image"
+                />
+              </Box>
+            ) : (
+              <span />
+            )}
+          </VStack>
         </VStack>
       </Flex>
     </>
