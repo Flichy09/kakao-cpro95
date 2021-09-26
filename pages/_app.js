@@ -26,8 +26,8 @@ export default function MyApp({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <link rel="shortcut icon" href="/favicon.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon.png" />
         <link
           rel="apple-touch-icon"
           sizes="57x57"

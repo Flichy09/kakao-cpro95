@@ -10,9 +10,12 @@ import {
   Text,
   Box,
   Input,
+  useToast,
 } from "@chakra-ui/react";
 
 export default function KakaoLink() {
+  const toast = useToast();
+
   const [text, setText] = useState("");
   const [files, setFiles] = useState([]);
   const [localUrl, setLocalUrl] = useState("");
@@ -45,6 +48,18 @@ export default function KakaoLink() {
   const handleUpload = (e) => {
     e.preventDefault();
     // console.log(e.target.files);
+    if (e.target.files[0].size > 1024 * 2 * 1000) {
+      toast({
+        title: "이미지 크기 초과",
+        description: "카카오 API에 따르면 Max 2MB까지 허용됩니다.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+      document.getElementById("button-file").value = "";
+      clean();
+      return;
+    }
     const imagesLocalUrl = URL.createObjectURL(e.target.files[0]);
     // console.log("localUrl : " + imagesLocalUrl);
     setLocalUrl(imagesLocalUrl);
@@ -116,7 +131,7 @@ export default function KakaoLink() {
 
           <VStack w="100%" mx={[4, 4, 0, 0]} spacing={4}>
             <Textarea
-              placeholder="한번에 200자까지만 전송 가능 (이미지 첨부할 경우 100자만 가능)"
+              placeholder="한번에 200자까지만 전송 가능 (이미지(Max 2MB) 첨부할 경우 100자만 가능)"
               value={text}
               onChange={(e) => handleChange(e)}
               colorScheme="blue"
