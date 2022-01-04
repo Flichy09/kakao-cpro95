@@ -68,7 +68,7 @@ export default function WithSubnavigation() {
             fontWeight={"bold"}
           >
             <Link style={{ textDecoration: "none" }} href="/">
-              카카오톡 웹
+              홈
             </Link>
           </Text>
 
@@ -252,46 +252,5 @@ const NAV_ITEMS = [
     label: "홈",
     href: "/",
   },
-  {
-    label: "카카오톡 웹 소개",
-    href: "/intro",
-  },
-  {
-    label: "API 이해",
-    children: [
-      {
-        label: "메시지 이해",
-        href: "/wiki/message",
-      },
-      {
-        label: "카카오링크",
-        href: "/wiki/kakaolink",
-      },
-      {
-        label: "카카오톡 메시지",
-        href: "/wiki/kakaotalk_message",
-      },
-      {
-        label: "이용 정책",
-        href: "/wiki/policy",
-      },
-      {
-        label: "지원 범위",
-        href: "/wiki/range",
-      },
-    ],
-  },
-  {
-    label: "API 상세보기",
-    children: [
-      {
-        label: "카카오링크 Javascript",
-        href: "/api-info/kakaolink-javascript",
-      },
-      {
-        label: "카카오톡 메시지 Javascript",
-        href: "/api-info/kakaotalk-javascript",
-      },
-    ],
-  },
+  
 ];

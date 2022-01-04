@@ -43,7 +43,7 @@ const Footer = () => {
           w="100%"
         >
           <MenuItem m={4} to="https://cpro95.tistory.com/50">
-            카카오톡 웹 버전 만들기
+            블로기 바로가기
           </MenuItem>
           <ButtonGroup variant="ghost" color="gray.600">
             <IconButton

@@ -121,11 +121,11 @@ export default function KakaoLink() {
       <Flex align="center" justify="center">
         <VStack>
           <Text m={10} fontWeight="bold">
-            카카오톡 웹은 Kakao Developer API와 NextJs, Chakra-UI로
+            이 서비스는 그 회사의 Developer API와 NextJs, Chakra-UI로
             만들어졌습니다.
             <br />
             <br />
-            카카오톡 PC 버전 설치 없이 간단한 메시지와 이미지를 전송할 수
+            회사에서 PC 버전 설치 없이 간단한 메시지와 이미지를 전송할 수
             있습니다.
           </Text>
 
@@ -143,7 +143,7 @@ export default function KakaoLink() {
                 다시 쓰기
               </Button>
               <Button colorScheme="yellow" onClick={(e) => handleSubmit(e)}>
-                카톡 전송
+                메시지 전송
               </Button>
               <Input
                 style={{ display: "none" }}
