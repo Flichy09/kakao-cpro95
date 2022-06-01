@@ -7,6 +7,10 @@ class MyDocument extends Document {
       <Html lang="ko">
         <Head>
           <meta charSet="utf-8" />
+          <meta
+            name="naver-site-verification"
+            content="5ed7bbda1a77dce3422e4b3dc95b6d6b492f4be9"
+          />
           {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
           <script
             async
